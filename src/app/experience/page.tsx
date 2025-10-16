@@ -1,543 +1,308 @@
-'use client';
+"use client";
 
-import React, { useRef } from 'react';
+import React from "react";
 import {
-    MapPinIcon,
-    PhoneIcon,
-    EnvelopeIcon,
-    AcademicCapIcon,
-    TrophyIcon,
-    StarIcon,
-    ArrowLeftIcon,
-    ArrowDownTrayIcon
-} from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import Navbar from '../../components/Navbar';
+  StarIcon,
+  TrophyIcon,
+  AcademicCapIcon,
+  ClockIcon,
+  MapPinIcon,
+  PhoneIcon,
+  EnvelopeIcon,
+} from "@heroicons/react/24/outline";
+import Navbar from "@/components/Navbar";
 
-const LinkedInIcon = ({ className }: { className?: string }) => (
-    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
+/* ---------- Social Icons ---------- */
+const InstagramIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.618 5.367 11.987 11.988 11.987s11.987-5.369 11.987-11.987C24.014 5.367 18.635.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.295C4.198 14.553 3.5 13.096 3.5 11.5s.698-3.053 1.626-4.193c.875-.805 2.026-1.295 3.323-1.295s2.448.49 3.323 1.295C12.7 8.447 13.398 9.904 13.398 11.5s-.698 3.053-1.626 4.193c-.875.805-2.026 1.295-3.323 1.295zm7.83-9.999c-.584 0-1.059.474-1.059 1.059s.475 1.059 1.059 1.059 1.059-.474 1.059-1.059-.475-1.059-1.059-1.059zm-4.262 1.511c-1.654 0-2.976 1.322-2.976 2.976s1.322 2.976 2.976 2.976 2.976-1.322 2.976-2.976-1.322-2.976-2.976-2.976z" />
+  </svg>
 );
 
-const ExperiencePage = () => {
-    const contentRef = useRef<HTMLDivElement>(null);
+const FacebookIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+  </svg>
+);
 
-    const handleScrollToSection = (sectionId: string) => {
-        // Navigate to home page with section anchor
-        window.location.href = `/#${sectionId}`;
-    };
+const TwitterIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v .60a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+  </svg>
+);
 
-    const downloadPDF = async () => {
-        if (!contentRef.current) return;
+const LinkedInIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.564v11.452zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm16.888-7.433H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+  </svg>
+);
 
-        try {
-            // Dynamically import the libraries
-            const html2canvas = (await import('html2canvas')).default;
-            const jsPDF = (await import('jspdf')).default;
+const YouTubeIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+  </svg>
+);
 
-            // Get the original element
-            const element = contentRef.current;
+/* ---------- Page Component ---------- */
+export default function ExperiencePage() {
+  // Helper to link back to home contact section
+  const toContactHref = "/#contact";
 
-            // Create a temporary container with safe styles
-            const tempContainer = document.createElement('div');
-            tempContainer.style.position = 'absolute';
-            tempContainer.style.left = '-9999px';
-            tempContainer.style.top = '0';
-            tempContainer.style.width = '800px';
-            tempContainer.style.backgroundColor = '#ffffff';
-            tempContainer.style.padding = '20px';
-            tempContainer.style.fontFamily = 'Arial, sans-serif';
-            tempContainer.style.fontSize = '14px';
-            tempContainer.style.lineHeight = '1.5';
-            tempContainer.style.color = '#000000';
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar />
 
-            // Clone content
-            const clone = element.cloneNode(true) as HTMLElement;
-
-            // Apply safe styles recursively - avoid computed styles
-            const applySafeStyles = (el: HTMLElement) => {
-                // Reset any potential oklch styles
-                el.style.backgroundColor = '';
-                el.style.color = '';
-                el.style.borderColor = '';
-
-                // Apply specific known safe styles based on classes
-                const classes = Array.from(el.classList);
-
-                // Background colors
-                if (classes.includes('bg-white')) el.style.backgroundColor = '#ffffff';
-                if (classes.includes('bg-blue-800-50')) el.style.backgroundColor = '#ecfdf5';
-                if (classes.includes('bg-blue-800-600')) el.style.backgroundColor = '#059669';
-                if (classes.includes('bg-blue-800-500')) el.style.backgroundColor = '#10b981';
-                if (classes.includes('bg-yellow-500')) el.style.backgroundColor = '#eab308';
-                if (classes.includes('bg-gray-50')) el.style.backgroundColor = '#f9fafb';
-                if (classes.includes('bg-gray-400')) el.style.backgroundColor = '#9ca3af';
-
-                // Text colors
-                if (classes.includes('text-blue-800-800')) el.style.color = '#065f46';
-                if (classes.includes('text-blue-800-700')) el.style.color = '#047857';
-                if (classes.includes('text-blue-800-600')) el.style.color = '#059669';
-                if (classes.includes('text-gray-900')) el.style.color = '#111827';
-                if (classes.includes('text-gray-700')) el.style.color = '#374151';
-                if (classes.includes('text-gray-600')) el.style.color = '#4b5563';
-                if (classes.includes('text-white')) el.style.color = '#ffffff';
-
-                // Border colors
-                if (classes.includes('border-blue-800-600')) el.style.borderColor = '#059669';
-                if (classes.includes('border-blue-800-500')) el.style.borderColor = '#10b981';
-                if (classes.includes('border-blue-800-300')) el.style.borderColor = '#6ee7b7';
-                if (classes.includes('border-gray-200')) el.style.borderColor = '#e5e7eb';
-
-                // Common layout properties with safe values
-                if (classes.includes('rounded-full')) el.style.borderRadius = '50%';
-                if (classes.includes('rounded-2xl')) el.style.borderRadius = '1rem';
-                if (classes.includes('rounded-lg')) el.style.borderRadius = '0.5rem';
-                if (classes.includes('rounded-md')) el.style.borderRadius = '0.375rem';
-
-                // Font weights
-                if (classes.includes('font-bold')) el.style.fontWeight = '700';
-                if (classes.includes('font-semibold')) el.style.fontWeight = '600';
-                if (classes.includes('font-medium')) el.style.fontWeight = '500';
-
-                // Basic layout
-                if (classes.includes('flex')) el.style.display = 'flex';
-                if (classes.includes('grid')) el.style.display = 'grid';
-                if (classes.includes('hidden')) el.style.display = 'none';
-
-                // Text sizes - use px values
-                if (classes.includes('text-4xl')) el.style.fontSize = '36px';
-                if (classes.includes('text-3xl')) el.style.fontSize = '30px';
-                if (classes.includes('text-2xl')) el.style.fontSize = '24px';
-                if (classes.includes('text-xl')) el.style.fontSize = '20px';
-                if (classes.includes('text-lg')) el.style.fontSize = '18px';
-                if (classes.includes('text-base')) el.style.fontSize = '16px';
-                if (classes.includes('text-sm')) el.style.fontSize = '14px';
-                if (classes.includes('text-xs')) el.style.fontSize = '12px';
-
-                // Padding with px values
-                if (classes.includes('p-8')) el.style.padding = '32px';
-                if (classes.includes('p-6')) el.style.padding = '24px';
-                if (classes.includes('p-4')) el.style.padding = '16px';
-                if (classes.includes('p-3')) el.style.padding = '12px';
-                if (classes.includes('p-2')) el.style.padding = '8px';
-
-                // Margins
-                if (classes.includes('mb-8')) el.style.marginBottom = '32px';
-                if (classes.includes('mb-6')) el.style.marginBottom = '24px';
-                if (classes.includes('mb-4')) el.style.marginBottom = '16px';
-                if (classes.includes('mb-3')) el.style.marginBottom = '12px';
-                if (classes.includes('mb-2')) el.style.marginBottom = '8px';
-                if (classes.includes('mr-3')) el.style.marginRight = '12px';
-                if (classes.includes('mr-2')) el.style.marginRight = '8px';
-
-                // Apply to children
-                Array.from(el.children).forEach(child => {
-                    if (child instanceof HTMLElement) {
-                        applySafeStyles(child);
-                    }
-                });
-            };
-
-            applySafeStyles(clone);
-            tempContainer.appendChild(clone);
-            document.body.appendChild(tempContainer);
-
-            // Wait for styles to apply
-            await new Promise(resolve => setTimeout(resolve, 200));
-
-            // Generate canvas with safe settings
-            const canvas = await html2canvas(tempContainer, {
-                scale: 1.5,
-                useCORS: true,
-                backgroundColor: '#ffffff',
-                logging: false,
-                allowTaint: false,
-                foreignObjectRendering: false,
-                width: tempContainer.scrollWidth,
-                height: tempContainer.scrollHeight,
-            });
-
-            // Remove temporary container
-            document.body.removeChild(tempContainer);
-
-            if (canvas.width === 0 || canvas.height === 0) {
-                throw new Error('Canvas has no content - please try again');
-            }
-
-            // Convert to JPEG
-            const imgData = canvas.toDataURL('image/jpeg', 0.85);
-
-            // Create PDF
-            const imgWidth = 210; // A4 width in mm
-            const pageHeight = 295; // A4 height in mm  
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            let heightLeft = imgHeight;
-
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            let position = 0;
-
-            // Add first page
-            pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-
-            // Add additional pages if needed
-            while (heightLeft >= 0) {
-                position = heightLeft - imgHeight;
-                pdf.addPage();
-                pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-            }
-
-            // Download
-            pdf.save('ethan-Escalera-perez-CV.pdf');
-
-        } catch (error) {
-            console.error('Error generating PDF:', error);
-            const errorMessage = error instanceof Error ? error.message : 'Please try again';
-            alert(`Error generating PDF: ${errorMessage}`);
-        }
-    };
-
-    return (
-        <div className="min-h-screen bg-gradient-to-b from-blue-800-50 to-white">
-            {/* Navbar */}
-            <Navbar onScrollToSection={handleScrollToSection} />
-
-            {/* CV Content with top padding */}
-            <div className="pt-20">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    {/* Navigation and Download Section */}
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
-                        <Link href="/" className="inline-flex items-center text-blue-800-600 hover:text-blue-800-700 mb-4 sm:mb-0 transition-colors">
-                            <ArrowLeftIcon className="h-4 w-4 mr-2" />
-                            Back to Home
-                        </Link>
-
-                        {/* Download CV Button */}
-                        <button
-                            onClick={downloadPDF}
-                            className="inline-flex items-center bg-blue-800-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                        >
-                            <ArrowDownTrayIcon className="h-5 w-5 mr-2" />
-                            Download CV as PDF
-                        </button>
-                    </div>
-
-                    {/* PDF Content Wrapper */}
-                    <div ref={contentRef} className="cv-content">
-                        {/* Header Section */}
-                        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6">
-                                <div className="flex-1">
-                                    <h1 className="text-4xl font-bold text-blue-800-800 mb-2">Ethan Blandon perez</h1>
-                                    <h2 className="text-xl text-blue-800-600 font-semibold mb-4">PGA Class A Professional | Biomechanics & Performance Coaching Expert</h2>
-                                    <div className="flex flex-wrap items-center gap-6 text-gray-600">
-                                        <div className="flex items-center">
-                                            <MapPinIcon className="h-5 w-5 mr-2 text-blue-800-600" />
-                                            Miami, FL
-                                        </div>
-                                        <div className="flex items-center">
-                                            <PhoneIcon className="h-5 w-5 mr-2 text-blue-800-600" />
-                                            (305) 776-4897
-                                        </div>
-                                        <div className="flex items-center">
-                                            <EnvelopeIcon className="h-5 w-5 mr-2 text-blue-800-600" />
-                                            deg280476@icloud.com
-                                        </div>
-                                        <div className="flex items-center">
-                                            <LinkedInIcon className="h-5 w-5 mr-2 text-blue-800-600" />
-                                            LinkedIn Profile
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Professional Headshot */}
-                                <div className="mt-6 lg:mt-0 lg:ml-8 flex-shrink-0">
-                                    <div className="relative">
-                                        <img
-                                            src="/images/headshot.jpeg"
-                                            alt="Ethan Blandon perez - Professional Headshot"
-                                            className="w-32 h-32 lg:w-40 lg:h-40 rounded-full object-cover border-4 border-blue-800-600 shadow-lg"
-                                        />
-                                        <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-800-600 rounded-full flex items-center justify-center border-2 border-white">
-                                            <TrophyIcon className="h-4 w-4 text-white" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Summary */}
-                            <div className="border-t border-gray-200 pt-6">
-                                <h3 className="text-lg font-semibold text-gray-900 mb-4">Professional Summary</h3>
-                                <p className="text-gray-700 leading-relaxed">
-                                    Dynamic PGA Class A Professional with 20+ years of experience in golf instruction, biomechanics, and performance optimization.
-                                    Expert in leveraging pressure plate technology, motion capture, and TPI methodologies to deliver data-driven coaching that enhances
-                                    player performance across all levels. Proven success in developing innovative training programs and leading high-performance teams,
-                                    with a 15% increase in clinic engagement and multiple national championships. Seeking to drive innovation at a cutting-edge golf
-                                    performance program through advanced biomechanics and technology integration.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Core Competencies */}
-                        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                            <h3 className="text-2xl font-bold text-blue-800-800 mb-6">Core Competencies</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-3">
-                                    <div className="flex items-start">
-                                        <div className="w-2 h-2 bg-blue-800-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        <div>
-                                            <h4 className="font-semibold text-gray-900">Biomechanical Coaching</h4>
-                                            <p className="text-gray-600">Motion capture, pressure plate technology, and performance analysis for personalized instruction.</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start">
-                                        <div className="w-2 h-2 bg-blue-800-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        <div>
-                                            <h4 className="font-semibold text-gray-900">TPI Methodology</h4>
-                                            <p className="text-gray-600">Certified in Golf Fitness, Junior Coaching, and Professional Instruction (Levels 1–3).</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start">
-                                        <div className="w-2 h-2 bg-blue-800-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        <div>
-                                            <h4 className="font-semibold text-gray-900">Program Development</h4>
-                                            <p className="text-gray-600">Designing data-driven training curricula for golfers and TPI-certified professionals.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="space-y-3">
-                                    <div className="flex items-start">
-                                        <div className="w-2 h-2 bg-blue-800-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        <div>
-                                            <h4 className="font-semibold text-gray-900">Leadership</h4>
-                                            <p className="text-gray-600">Building and mentoring high-performance teams, fostering operational excellence.</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start">
-                                        <div className="w-2 h-2 bg-blue-800-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        <div>
-                                            <h4 className="font-semibold text-gray-900">Client Engagement</h4>
-                                            <p className="text-gray-600">Communicating complex concepts clearly, building strong relationships with diverse audiences.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Professional Experience */}
-                        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                            <h3 className="text-2xl font-bold text-blue-800-800 mb-8">Professional Experience</h3>
-
-                            {/* Teaching Professional */}
-                            <div className="border-l-4 border-blue-800-500 pl-6 mb-8">
-                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                                    <h4 className="text-xl font-semibold text-gray-900">Teaching Professional</h4>
-                                    <span className="text-blue-800-600 font-medium">October 2022 – Present</span>
-                                </div>
-                                <p className="text-lg text-blue-800-700 mb-3">La Gorce Country Club, Miami Beach, FL</p>
-                                <ul className="space-y-2 text-gray-700">
-                                    <li className="flex items-start">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        Deliver personalized coaching using biomechanical analysis and pressure plate technology, improving swing efficiency by up to 20% for clients.
-                                    </li>
-                                    <li className="flex items-start">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        Design innovative training programs blending technical, physical, and mental coaching, boosting clinic participation by 15%.
-                                    </li>
-                                    <li className="flex items-start">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        Coach professional players, including Manuel Torres (+1 786-281-5637) and Jorge perez (+1 786-370-5184), achieving top finishes in regional tournaments.
-                                    </li>
-                                </ul>
-                            </div>
-
-                            {/* Founder & CEO */}
-                            <div className="border-l-4 border-blue-800-500 pl-6 mb-8">
-                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                                    <h4 className="text-xl font-semibold text-gray-900">Founder & CEO</h4>
-                                    <span className="text-blue-800-600 font-medium">June 2015 – Present</span>
-                                </div>
-                                <p className="text-lg text-blue-800-700 mb-3">DEGA Golf Academy, Caracas, Venezuela – Doral, FL</p>
-                                <ul className="space-y-2 text-gray-700">
-                                    <li className="flex items-start">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        Founded a premier academy focused on biomechanical training, reducing player handicaps by an average of 10% through data-driven coaching.
-                                    </li>
-                                    <li className="flex items-start">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        Developed TPI-based curricula, training 25+ instructors and coaching junior, amateur, and professional golfers to competitive success.
-                                    </li>
-                                    <li className="flex items-start">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        Expanded academy&apos;s reach to South Florida, integrating advanced technologies like motion capture and force plates.
-                                    </li>
-                                </ul>
-                            </div>
-
-                            {/* Director of Golf */}
-                            <div className="border-l-4 border-blue-800-500 pl-6 mb-8">
-                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                                    <h4 className="text-xl font-semibold text-gray-900">Director of Golf and Instruction</h4>
-                                    <span className="text-blue-800-600 font-medium">May 2014 – December 2019</span>
-                                </div>
-                                <p className="text-lg text-blue-800-700 mb-3">Izcaragua Country Club, Caracas, Venezuela</p>
-                                <ul className="space-y-2 text-gray-700">
-                                    <li className="flex items-start">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        Led golf operations and staff training, improving member satisfaction by 25% through strategic enhancements.
-                                    </li>
-                                    <li className="flex items-start">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        Founded the Venezuelan National Golf School, designing programs that led to 5 international championship wins.
-                                    </li>
-                                    <li className="flex items-start">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        Implemented data-driven coaching, enhancing player performance through biomechanical insights.
-                                    </li>
-                                </ul>
-                            </div>
-
-                            {/* National Team Coach */}
-                            <div className="border-l-4 border-blue-800-500 pl-6">
-                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                                    <h4 className="text-xl font-semibold text-gray-900">National Team Head Coach</h4>
-                                    <span className="text-blue-800-600 font-medium">July 2007 – July 2014</span>
-                                </div>
-                                <p className="text-lg text-blue-800-700 mb-3">Venezuelan Golf Federation, Caracas, Venezuela</p>
-                                <ul className="space-y-2 text-gray-700">
-                                    <li className="flex items-start">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        Designed training programs integrating biomechanics and mental coaching, securing top-3 finishes in 8 international competitions.
-                                    </li>
-                                    <li className="flex items-start">
-                                        <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                        Mentored athletes to achieve national rankings, leveraging video analysis and TPI methodologies.
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        {/* Education & Certifications Grid */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                            {/* Education */}
-                            <div className="bg-white rounded-2xl shadow-lg p-8">
-                                <h3 className="text-2xl font-bold text-blue-800-800 mb-6 flex items-center">
-                                    <AcademicCapIcon className="h-6 w-6 mr-2" />
-                                    Education
-                                </h3>
-                                <div className="space-y-4">
-                                    <div className="border-l-4 border-blue-800-300 pl-4">
-                                        <h4 className="font-semibold text-gray-900">B.S. in Economics</h4>
-                                        <p className="text-blue-800-700">Georgia State University, Atlanta, GA</p>
-                                    </div>
-                                    <div className="border-l-4 border-blue-800-300 pl-4">
-                                        <h4 className="font-semibold text-gray-900">A.S. in Business</h4>
-                                        <p className="text-blue-800-700">Wallace State Community College, Hanceville, AL</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Certifications */}
-                            <div className="bg-white rounded-2xl shadow-lg p-8">
-                                <h3 className="text-2xl font-bold text-blue-800-800 mb-6 flex items-center">
-                                    <StarIcon className="h-6 w-6 mr-2" />
-                                    Certifications
-                                </h3>
-                                <div className="space-y-2">
-                                    {[
-                                        'PGA Class A Professional',
-                                        'TPI Golf Fitness Instructor Level 1',
-                                        'TPI Golf Junior Coach Level 2',
-                                        'TPI Golf Professional Instructor Levels 2 & 3',
-                                        'R&A Coaching Certifications 1–3',
-                                        'Mental Coaching, Bob Rotella',
-                                        'Vision 54 Coaching, Pía Nilson & Lynn Marriott',
-                                        'PGA of America Teaching Symposium (Chris Como)'
-                                    ].map((cert, index) => (
-                                        <div key={index} className="flex items-center">
-                                            <div className="w-2 h-2 bg-blue-800-500 rounded-full mr-3"></div>
-                                            <span className="text-gray-700">{cert}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Competitive Achievements */}
-                        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-                            <h3 className="text-2xl font-bold text-blue-800-800 mb-6 flex items-center">
-                                <TrophyIcon className="h-6 w-6 mr-2" />
-                                Competitive Golf Achievements
-                            </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <h4 className="font-semibold text-gray-900 mb-3">Tournament Victories</h4>
-                                    <ul className="space-y-2">
-                                        <li className="flex items-center">
-                                            <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
-                                            <span className="text-gray-700">Winner, Sambil Open 2015, Venezuela</span>
-                                        </li>
-                                        <li className="flex items-center">
-                                            <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
-                                            <span className="text-gray-700">Winner, Merand Open 2016, Venezuela</span>
-                                        </li>
-                                        <li className="flex items-center">
-                                            <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
-                                            <span className="text-gray-700">Won 7 collegiate tournaments</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-gray-900 mb-3">Professional Tours</h4>
-                                    <ul className="space-y-2">
-                                        {[
-                                            'PGA Tour',
-                                            'Nike Tour',
-                                            'Web.Com Tour',
-                                            'European Tour',
-                                            'European Challenge Tour',
-                                            'Latin American PGA Tour'
-                                        ].map((tour, index) => (
-                                            <li key={index} className="flex items-center">
-                                                <div className="w-2 h-2 bg-blue-800-500 rounded-full mr-3"></div>
-                                                <span className="text-gray-700">{tour}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="mt-6 pt-4 border-t border-gray-200">
-                                <p className="text-gray-700">
-                                    <strong>Team Captain:</strong> Golf Teams at Wallace State Community College and Georgia State University
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Technical Skills */}
-                        <div className="bg-white rounded-2xl shadow-lg p-8">
-                            <h3 className="text-2xl font-bold text-blue-800-800 mb-6">Technical Skills & Expertise</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {[
-                                    'Biomechanical Analysis & Pressure Plate Technology',
-                                    'Data-Driven Coaching & Curriculum Design',
-                                    'Leadership & Staff Mentorship',
-                                    'Client Relationship Management',
-                                    'Technology Integration (Motion Capture, Video Analysis)',
-                                    'TPI Methodology Implementation'
-                                ].map((skill, index) => (
-                                    <div key={index} className="bg-blue-800-50 rounded-lg p-4 text-center">
-                                        <span className="text-blue-800-800 font-medium">{skill}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      {/* Hero / Intro */}
+      <section className="pt-24 pb-16 bg-gradient-to-br from-blue-50 to-yellow-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+            Experience
+          </h1>
+          <p className="text-lg text-gray-700 max-w-3xl">
+            A snapshot of Ethan’s competitive background, coaching philosophy,
+            and the tools used to help golfers improve quickly and sustainably.
+          </p>
+          <div className="mt-6">
+            <a
+              href={toContactHref}
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Book a Lesson
+            </a>
+          </div>
         </div>
-    );
-};
+      </section>
 
-export default ExperiencePage; 
+      {/* Professional Excellence */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Professional Excellence
+            </h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center p-6 bg-blue-50 rounded-lg">
+              <TrophyIcon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">
+                PGA TOUR & European Tour
+              </h3>
+              <p className="text-gray-600">
+                Competed across PGA Tour, European Tour, Web.com, and more.
+              </p>
+            </div>
+            <div className="text-center p-6 bg-blue-50 rounded-lg">
+              <AcademicCapIcon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">
+                20+ Years & Advanced Tech
+              </h3>
+              <p className="text-gray-600">
+                Motion capture, pressure plates, and TPI methodologies.
+              </p>
+            </div>
+            <div className="text-center p-6 bg-blue-50 rounded-lg">
+              <StarIcon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">
+                Academy Founder & Champion
+              </h3>
+              <p className="text-gray-600">
+                DEGA Golf Academy founder and multiple pro wins.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+          <div className="lg:col-span-3">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              About Ethan Blandon
+            </h2>
+            <div className="space-y-4 text-gray-600">
+              <p className="text-lg">
+                PGA Class A Professional combining world-class competitive
+                experience with a modern, biomechanics-driven approach.
+              </p>
+              <p>
+                Career highlights include wins at the Sambil Open (2015) and
+                Merand Open (2016), plus competition on the PGA and European
+                Tours.
+              </p>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                PGA Class A Professional
+              </span>
+              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                TPI Certified
+              </span>
+              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                Tournament Winner
+              </span>
+              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                Academy Founder
+              </span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-2">
+            <div className="space-y-6">
+              <div className="relative">
+                <img
+                  src="/images/ethan-trophy.jpg"
+                  alt="Ethan with tournament trophy"
+                  className="w-full h-auto rounded-xl shadow-lg"
+                />
+                <div className="absolute -bottom-3 -right-3 w-full h-full bg-blue-100 rounded-xl -z-10" />
+              </div>
+
+              <div className="bg-blue-600 rounded-lg p-6 text-white">
+                <h3 className="text-lg font-bold mb-3">Teaching Philosophy</h3>
+                <blockquote className="text-sm italic mb-3">
+                  “Blend biomechanical precision, smart practice, and confidence
+                  to make golf more fun and consistent.”
+                </blockquote>
+                <p className="text-blue-100 text-sm">
+                  Personalized coaching and simple practice plans help golfers
+                  improve quickly and sustainably.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Programs (buttons link back to home contact) */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Instruction Programs
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Biomechanical analysis + personalized coaching for measurable
+              improvement
+            </p>
+            <div className="w-24 h-1 bg-blue-600 mx-auto mt-4" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "Starter Lesson", duration: "60 minutes", description: "Build fundamentals and confidence.", features: ["Grip/stance/posture", "Contact drills", "Practice routine", "Improvement plan"] },
+              { title: "On-Course Coaching", duration: "90 minutes", description: "Strategy and decision-making on the course.", features: ["Club selection", "Pre-shot routine", "Recovery shots", "Confidence under pressure"] },
+              { title: "Progress Package", duration: "4 × 60 minutes", description: "Structured progression with goals.", features: ["Video check-ins", "Weekly assignments", "Performance tracking", "Progress reports"] },
+              { title: "Junior Development", duration: "45–60 minutes", description: "Fun lessons for younger players.", features: ["Fun drills", "Strong fundamentals", "Confidence building", "Parent updates"] },
+              { title: "Short Game Mastery", duration: "60 minutes", description: "Save strokes around the green.", features: ["Chipping/pitching", "Putting control", "Bunker play", "Short-game strategy"] },
+              { title: "Group Clinics", duration: "90 minutes", description: "Learn together in a social setting.", features: ["Max 4 per group", "Interactive sessions", "Challenges/games", "Peer support"] },
+            ].map((service, index) => (
+              <div key={index} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-semibold text-gray-900">{service.title}</h3>
+                  <div className="flex items-center text-blue-600">
+                    <ClockIcon className="h-4 w-4 mr-1" />
+                    <span className="text-sm">{service.duration}</span>
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <ul className="space-y-2 mb-6">
+                  {service.features.map((f, i) => (
+                    <li key={i} className="flex items-center text-sm text-gray-500">
+                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={toContactHref}
+                  className="w-full inline-block text-center bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors"
+                >
+                  Book Now
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Simple contact card pointing back to home */}
+      <section className="py-16 bg-blue-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            <h3 className="text-2xl font-semibold mb-6">Get In Touch</h3>
+            <div className="space-y-4">
+              <div className="flex items-center">
+                <MapPinIcon className="h-6 w-6 mr-4 text-blue-300" />
+                <div>
+                  <p className="font-medium">La Gorce Country Club</p>
+                  <p className="text-blue-200">6400 Alton Rd, Miami Beach, FL 33141</p>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <PhoneIcon className="h-6 w-6 mr-4 text-blue-300" />
+                <div>
+                  <p className="font-medium">Call for Lessons</p>
+                  <p className="text-blue-200">(305) 776-4897</p>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <EnvelopeIcon className="h-6 w-6 mr-4 text-blue-300" />
+                <div>
+                  <p className="font-medium">Email</p>
+                  <p className="text-blue-200">deg280476@icloud.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg p-8 text-gray-900">
+            <h3 className="text-2xl font-semibold mb-4">Ready to Improve Your Game?</h3>
+            <p className="text-gray-600 mb-6">
+              Head back to the home page to book your lesson.
+            </p>
+            <a
+              href={toContactHref}
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Go to Booking Form
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-2xl font-bold text-blue-400 mb-2">Ethan Blandon</h3>
+          <p className="text-gray-400 mb-4">
+            PGA Class A Professional | Biomechanics &amp; Performance Expert
+          </p>
+          <div className="flex justify-center space-x-6 mb-6">
+            <a href="#" className="text-gray-400 hover:text-blue-400" aria-label="Instagram">
+              <InstagramIcon className="h-6 w-6" />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-blue-400" aria-label="Facebook">
+              <FacebookIcon className="h-6 w-6" />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-blue-400" aria-label="Twitter">
+              <TwitterIcon className="h-6 w-6" />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-blue-400" aria-label="LinkedIn">
+              <LinkedInIcon className="h-6 w-6" />
+            </a>
+            <a href="#" className="text-gray-400 hover:text-blue-400" aria-label="YouTube">
+              <YouTubeIcon className="h-6 w-6" />
+            </a>
+          </div>
+          <div className="pt-6 border-t border-gray-800 text-sm text-gray-500">
+            <p>&copy; {new Date().getFullYear()} Ethan Blandon Golf Instruction. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
