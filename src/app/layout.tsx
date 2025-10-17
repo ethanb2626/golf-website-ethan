@@ -68,7 +68,7 @@ export const metadata: Metadata = {
       "Beginner-friendly golf instruction with a focus on strong fundamentals and enjoyable practice.",
     images: [
       {
-        url: "/images/og.jpg?v=2", // put a 1200x630 jpg here
+        url: "/images/og.jpg?v=3", // put a 1200x630 jpg here
         width: 1200,
         height: 630,
         alt: "Ethan Blandon - Golf Instructor",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     title: "Get Into Golf with Ethan | Golf Lessons & Coaching in Miami",
     description:
       "Friendly, fundamentals-first golf coaching in Miami with Ethan Blandon.",
-    images: ["/images/og.jpg?v=2"],
+    images: ["/images/og.jpg?v=3"],
     creator: "@getintogolf",
   },
 
