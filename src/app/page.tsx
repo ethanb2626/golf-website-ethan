@@ -83,12 +83,20 @@ export default function HomePage() {
       setStatus("ok");
       setMessage("✅ Booking request sent! I’ll confirm by email.");
       formRef.current?.reset();
-    } catch (err: any) {
-      console.error("Submit failed:", err);
-      setStatus("error");
-      setMessage(`❌ Could not submit. ${err?.message ? `(${err.message})` : "Please try again."}`);
-    }
+    } catch (err: unknown) {
+  console.error("Submit failed:", err);
+
+  // Safely check if it's an Error before reading `.message`
+  if (err instanceof Error) {
+    setMessage(`❌ Could not submit. (${err.message})`);
+  } else {
+    setMessage("❌ Could not submit. Please try again.");
   }
+
+  setStatus("error");
+}
+  }
+
 
   // Smooth scroll for navbar buttons
   const handleScrollToSection = (sectionId: string) => {
