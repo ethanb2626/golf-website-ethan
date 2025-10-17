@@ -26,18 +26,17 @@ export async function POST(request: Request) {
       );
     }
 
-    const booking = await prisma.booking.create({
-      data: {
-        name,
-        email,
-        phone,
-        lessonType,
-        notes,
-      },
-    });
 
     return NextResponse.json(
-      { message: "Booking created successfully", booking },
+      { message: "Booking created successfully", booking: await prisma.booking.create({
+          data: {
+            name,
+            email,
+            phone,
+            lessonType,
+            notes,
+          },
+        }) },
       { status: 201 }
     );
   } catch (err) {
