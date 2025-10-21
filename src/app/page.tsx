@@ -85,6 +85,7 @@ export default function HomePage() {
       formRef.current?.reset();
     } catch (err: unknown) {
   console.error("Submit failed:", err);
+  setStatus("error"); // ← keep this so your UI knows it failed
 
   // Safely check if it's an Error before reading `.message`
   if (err instanceof Error) {
